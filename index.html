@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residência & Estilo | Jardim Carioca</title>
+  <meta name="description" content="Portfólio imobiliário minimalista de alto padrão no Condomínio Novo Horizonte, Jardim Carioca." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f8f8f8;
+      --card-bg: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #737373;
+      --border: #e5e5e5;
+      --accent: #b46d3f;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    html { scroll-behavior: smooth; background-color: var(--bg); color: var(--text); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 6rem; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .container { max-width: 1320px; margin: 0 auto; padding: 0 1.5rem; }
+    @media (min-width: 768px) { .container { padding: 0 3rem; } }
+
+    .top-bar { position: sticky; top: 0; z-index: 40; background: rgba(248, 248, 248, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .top-bar-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .brand-title { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.02em; color: var(--text); white-space: nowrap; }
+    .top-meta { font-size: 0.8125rem; color: var(--text-muted); white-space: nowrap; }
+
+    .hero-section { padding: 4rem 0 3rem; }
+    @media (min-width: 768px) { .hero-section { padding: 6rem 0 4.5rem; } }
+    .hero-kicker { font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+    .hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: var(--text); max-width: 18ch; margin-bottom: 1.5rem; }
+    .hero-desc { font-size: clamp(1rem, 1.8vw, 1.25rem); font-weight: 300; color: var(--text-muted); max-width: 65ch; line-height: 1.6; margin-bottom: 3rem; }
+    .hero-image-frame { position: relative; overflow: hidden; border: 1px solid var(--border); background-color: #ededed; aspect-ratio: 16 / 9; cursor: pointer; }
+    .hero-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .hero-image-frame:hover .hero-image { transform: scale(1.02); }
+
+    .building-info-section { padding: 5rem 0 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 3rem 0; }
+    .building-info-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 1024px) { .building-info-grid { grid-template-columns: 1fr 1.6fr; gap: 5rem; } }
+    .concept-lead { font-size: clamp(1.75rem, 3.2vw, 2.75rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1.5rem; }
+    .concept-lead .highlight { color: var(--accent); font-weight: 700; }
+    .concept-subtext { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; max-width: 42ch; }
+    .info-heading { font-size: 1.75rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .info-lead { font-size: 1rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6; }
+    .specs-table { border-top: 1px solid var(--border); margin-bottom: 2.5rem; }
+    .spec-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 0.9375rem; }
+    .spec-label { color: var(--text-muted); font-weight: 400; white-space: nowrap; }
+    .spec-value { color: var(--text); font-weight: 500; text-align: right; }
+    .features-heading { font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+    .features-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .feature-item { font-size: 0.9375rem; color: var(--text); display: flex; align-items: flex-start; gap: 0.75rem; }
+    .feature-item::before { content: '—'; color: var(--accent); font-weight: 600; }
+
+    .room-nav-bar { position: sticky; top: 72px; z-index: 30; background: rgba(248, 248, 248, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+    .room-nav-bar::-webkit-scrollbar { display: none; }
+    .room-nav-inner { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 0; min-width: max-content; }
+    .room-nav-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.875rem; font-size: 0.8125rem; font-weight: 500; color: var(--text-muted); border-radius: 4px; transition: all 0.2s ease; white-space: nowrap; }
+    .room-nav-link:hover { color: var(--text); background: rgba(0, 0, 0, 0.04); }
+    .room-nav-link.active { color: var(--text); background: #ffffff; border: 1px solid var(--border); font-weight: 600; }
+    .nav-number { font-size: 0.75rem; color: var(--text-muted); }
+
+    .room-section { padding: 5rem 0 3rem; border-bottom: 1px solid var(--border); }
+    .room-header { margin-bottom: 2.5rem; max-width: 50rem; }
+    .room-header-meta { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+    .room-title { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 600; letter-spacing: -0.03em; color: var(--text); margin-bottom: 0.5rem; }
+    .room-subtitle { font-size: 1.0625rem; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; }
+    .room-desc { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6; }
+
+    .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+      .md\:col-span-2 { grid-column: span 2; }
+      .md\:row-span-2 { grid-row: span 2; }
+    }
+    .gallery-card { cursor: pointer; display: flex; flex-direction: column; gap: 0.75rem; }
+    .image-wrapper { position: relative; overflow: hidden; background-color: #eee; border: 1px solid var(--border); }
+    .aspect-\[4\/3\] { aspect-ratio: 4 / 3; }
+    .aspect-\[16\/9\] { aspect-ratio: 16 / 9; }
+    @media (min-width: 768px) { .md\:aspect-\[16\/11\] { aspect-ratio: 16 / 11; } }
+    .gallery-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .gallery-card:hover .gallery-image { transform: scale(1.03); }
+    .image-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.25); opacity: 0; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem; transition: opacity 0.25s ease; }
+    .gallery-card:hover .image-overlay { opacity: 1; }
+    .overlay-index { color: #fff; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.05em; }
+    .overlay-hint { color: #fff; font-size: 0.75rem; background: rgba(0, 0, 0, 0.6); padding: 0.375rem 0.75rem; border-radius: 4px; backdrop-filter: blur(4px); }
+    .image-caption { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.8125rem; padding: 0 0.125rem; }
+    .caption-title { color: var(--text); font-weight: 500; }
+    .caption-path { color: var(--text-muted); font-family: monospace; font-size: 0.6875rem; }
+
+    .site-footer { padding: 4rem 0 2rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    .footer-grid { display: flex; flex-direction: column; gap: 2rem; justify-content: space-between; }
+    @media (min-width: 768px) { .footer-grid { flex-direction: row; align-items: flex-start; } }
+    .footer-brand { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .footer-desc { font-size: 0.875rem; color: var(--text-muted); max-width: 40ch; }
+    .footer-specs-summary { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.7; }
+
+    .lightbox-modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(20, 20, 20, 0.95); backdrop-filter: blur(12px); flex-direction: column; justify-content: space-between; padding: 1.5rem; color: #ffffff; }
+    .lightbox-modal.open { display: flex; }
+    .lightbox-top { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
+    .lightbox-counter { font-size: 0.875rem; color: rgba(255, 255, 255, 0.7); }
+    .lightbox-close-btn { background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; line-height: 1; padding: 0.25rem 0.5rem; }
+    .lightbox-center { position: relative; display: flex; align-items: center; justify-content: center; flex: 1; max-width: 1200px; width: 100%; margin: 0 auto; overflow: hidden; }
+    .lightbox-img { max-width: 100%; max-height: 75vh; object-fit: contain; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
+    .lightbox-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: background 0.2s; }
+    .lightbox-nav-btn:hover { background: rgba(255, 255, 255, 0.25); }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-bottom { text-align: center; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .lightbox-caption-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.25rem; }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="brand-title">Residência & Estilo</div>
+      <div class="top-meta">Jardim Carioca · Ilha do Governador</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-section">
+      <p class="hero-kicker">Apresentação Arquitetônica</p>
+      <h1 class="hero-title">Residência & Estilo</h1>
+      <p class="hero-desc">Apartamento no Jardim Carioca, Ilha do Governador. Uma composição refinada de iluminação natural, ventilação cruzada e marcenaria sob medida Madeirol® com reforma integral.</p>
+      <div class="hero-image-frame" onclick="openLightbox('quarto-suite', 0)">
+        <img src="hero.jpeg" alt="Perspectiva Residência & Estilo" class="hero-image" />
+      </div>
+    </section>
+
+    <section class="building-info-section" id="informacoes">
+      <div class="building-info-grid">
+        <div class="concept-column">
+          <h2 class="concept-lead">Pureza geométrica.<br /><span class="highlight">Ao menor detalhe.</span></h2>
+          <p class="concept-subtext">Cada centímetro foi planejado para maximizar a sensação de espaço, luminosidade e conforto sensorial contínuo.</p>
+        </div>
+
+        <div class="specs-column">
+          <h3 class="info-heading">Informações do Imóvel</h3>
+          <p class="info-lead">Arquitetura que inspira. Um projeto que alia a serenidade do minimalismo funcional com acabamentos de alto padrão.</p>
+
+          <div class="specs-table">
+            <div class="spec-row"><span class="spec-label">Local</span><span class="spec-value">Condomínio Novo Horizonte | Jardim Carioca (Próximo ao Shopping Ilha Plaza)</span></div>
+            <div class="spec-row"><span class="spec-label">Área Útil</span><span class="spec-value">75 m²</span></div>
+            <div class="spec-row"><span class="spec-label">Dormitórios</span><span class="spec-value">2 quartos [sendo 1 suíte privativa]</span></div>
+            <div class="spec-row"><span class="spec-label">Reforma Integral</span><span class="spec-value">2018 (infraestrutura total renovada)</span></div>
+            <div class="spec-row"><span class="spec-label">Infraestrutura</span><span class="spec-value">Instalações elétrica, hidráulica e rede de gás 100% novas</span></div>
+            <div class="spec-row"><span class="spec-label">Marcenaria</span><span class="spec-value">Armários Madeirol® sob medida de alta marcenaria</span></div>
+          </div>
+
+          <h4 class="features-heading">Destaques Construtivos</h4>
+          <ul class="features-list">
+            <li class="feature-item">Parte elétrica, hidráulica e gás novas.</li>
+            <li class="feature-item">Armários Madeirol® sob medida com ferragens amortecidas.</li>
+            <li class="feature-item">Pisos em porcelanato e acabamento de borda retificada.</li>
+            <li class="feature-item">Esquadrias com isolamento acústico e ventilação natural generosa.</li>
+            <li class="feature-item">Localização privilegiada a passos do Shopping Ilha Plaza, condução e serviços.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="room-nav-bar" aria-label="Navegação por cômodos">
+      <div class="room-nav-inner">
+        <a href="#quarto-suite" class="room-nav-link" data-room="quarto-suite"><span class="nav-number">01</span><span class="nav-label">Quarto Suíte</span></a>
+        <a href="#quarto" class="room-nav-link" data-room="quarto"><span class="nav-number">02</span><span class="nav-label">Quarto</span></a>
+        <a href="#sala" class="room-nav-link" data-room="sala"><span class="nav-number">03</span><span class="nav-label">Sala</span></a>
+        <a href="#cozinha" class="room-nav-link" data-room="cozinha"><span class="nav-number">04</span><span class="nav-label">Cozinha</span></a>
+        <a href="#escritorio" class="room-nav-link" data-room="escritorio"><span class="nav-number">05</span><span class="nav-label">Escritório</span></a>
+        <a href="#banheiro-social" class="room-nav-link" data-room="banheiro-social"><span class="nav-number">06</span><span class="nav-label">Banheiro Social</span></a>
+        <a href="#area" class="room-nav-link" data-room="area"><span class="nav-number">07</span><span class="nav-label">Área</span></a>
+        <a href="#condominio" class="room-nav-link" data-room="condominio"><span class="nav-number">08</span><span class="nav-label">Condomínio</span></a>
+        <a href="#armario-corredor" class="room-nav-link" data-room="armario-corredor"><span class="nav-number">09</span><span class="nav-label">Armário Corredor</span></a>
+      </div>
+    </nav>
+
+    <!-- Quarto Suíte -->
+    <section id="quarto-suite" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">01</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Quarto Suíte</h2>
+        <p class="room-subtitle">Privacidade, conforto térmico e marcenaria integral</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-2 md:row-span-2" onclick="openLightbox('quarto-suite', 0)">
+          <div class="image-wrapper aspect-[4/3] md:aspect-[16/11]">
+            <img src="Quarto Suíte/quarto-suite-1.jpeg" alt="Suíte Master" loading="lazy" class="gallery-image"/>
+            <div class="image-overlay"><span class="overlay-index">01</span><span class="overlay-hint">Ampliar</span></div>
+          </div>
+          <figcaption class="image-caption"><span class="caption-title">Suíte Master</span><span class="caption-path">Quarto Suíte/quarto-suite-1.jpeg</span></figcaption>
+        </figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 1)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-2.jpeg" alt="Suíte" loading="lazy" class="gallery-image"/></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Quarto -->
+    <section id="quarto" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">02</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Quarto</h2>
+        <p class="room-subtitle">Espaço aconchegante, luminosidade e marcenaria planejada</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 0)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-1.jpeg" alt="Quarto" loading="lazy" class="gallery-image"/></div>
+        </figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 1)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-2.jpeg" alt="Quarto" loading="lazy" class="gallery-image"/></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Sala -->
+    <section id="sala" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">03</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Sala</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-2" onclick="openLightbox('sala', 0)">
+          <div class="image-wrapper aspect-[16/9]"><img src="Sala/sala-1.jpeg" alt="Sala" loading="lazy" class="gallery-image"/></div>
+        </figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 1)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-2.jpeg" alt="Sala" loading="lazy" class="gallery-image"/></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Cozinha -->
+    <section id="cozinha" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">04</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Cozinha</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('cozinha', 0)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Cozinha/cozinha-1.jpeg" alt="Cozinha" loading="lazy" class="gallery-image"/></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Escritório -->
+    <section id="escritorio" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">05</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Escritório</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('escritorio', 0)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Escritório/escritorio-1.jpeg" alt="Escritório" loading="lazy" class="gallery-image"/></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Banheiro Social -->
+    <section id="banheiro-social" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">06</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Banheiro Social</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('banheiro-social', 0)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Banheiro Social/banheiro-social-1.jpeg" alt="Banheiro Social" loading="lazy" class="gallery-image"/></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Área -->
+    <section id="area" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">07</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Área</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('area', 0)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Área/area-1.jpeg" alt="Área" loading="lazy" class="gallery-image"/></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Condomínio -->
+    <section id="condominio" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">08</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Condomínio</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('condominio', 0)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Condomínio/condominio-1.jpeg" alt="Condomínio" loading="lazy" class="gallery-image"/></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Armário Corredor -->
+    <section id="armario-corredor" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">09</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Armário Corredor</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('armario-corredor', 0)">
+          <div class="image-wrapper aspect-[4/3]"><img src="Armário corredor/armario-corredor-1.jpeg" alt="Armário Corredor" loading="lazy" class="gallery-image"/></div>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">Residência & Estilo</div>
+        <p class="footer-desc">Arquitetura contemporânea, proporções harmônicas e precisão construtiva.</p>
+      </div>
+      <div class="footer-specs-summary">
+        <p><strong>Condomínio Novo Horizonte</strong> — Jardim Carioca</p>
+        <p>75 m² úteis · 2 Quartos [1 Suíte] · Reforma 2018</p>
+        <p>Armários planejados Madeirol® sob medida</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true">
+    <div class="lightbox-top">
+      <span id="lightboxCounter" class="lightbox-counter">01 / 01</span>
+      <button class="lightbox-close-btn" onclick="closeLightbox()">×</button>
+    </div>
+    <div class="lightbox-center">
+      <button class="lightbox-nav-btn lightbox-prev" onclick="prevLightboxImage()">‹</button>
+      <img id="lightboxImg" src="" alt="" class="lightbox-img" />
+      <button class="lightbox-nav-btn lightbox-next" onclick="nextLightboxImage()">›</button>
+    </div>
+    <div class="lightbox-bottom">
+      <div id="lightboxTitle" class="lightbox-caption-title"></div>
+    </div>
+  </div>
+
+  <script>
+    const roomsData = [
+      { id: "quarto-suite", title: "Quarto Suíte", images: [{ localPath: "Quarto Suíte/quarto-suite-1.jpeg", title: "Suíte Master" }, { localPath: "Quarto Suíte/quarto-suite-2.jpeg", title: "Suíte" }] },
+      { id: "quarto", title: "Quarto", images: [{ localPath: "Quarto/quarto-1.jpeg", title: "Quarto 1" }, { localPath: "Quarto/quarto-2.jpeg", title: "Quarto 2" }] },
+      { id: "sala", title: "Sala", images: [{ localPath: "Sala/sala-1.jpeg", title: "Sala 1" }, { localPath: "Sala/sala-2.jpeg", title: "Sala 2" }] },
+      { id: "cozinha", title: "Cozinha", images: [{ localPath: "Cozinha/cozinha-1.jpeg", title: "Cozinha" }] },
+      { id: "escritorio", title: "Escritório", images: [{ localPath: "Escritório/escritorio-1.jpeg", title: "Escritório" }] },
+      { id: "banheiro-social", title: "Banheiro Social", images: [{ localPath: "Banheiro Social/banheiro-social-1.jpeg", title: "Banheiro Social" }] },
+      { id: "area", title: "Área", images: [{ localPath: "Área/area-1.jpeg", title: "Área" }] },
+      { id: "condominio", title: "Condomínio", images: [{ localPath: "Condomínio/condominio-1.jpeg", title: "Condomínio" }] },
+      { id: "armario-corredor", title: "Armário Corredor", images: [{ localPath: "Armário corredor/armario-corredor-1.jpeg", title: "Armário Corredor" }] }
+    ];
+
+    let currentRoomId = null;
+    let currentImageIndex = 0;
+
+    function openLightbox(roomId, index) {
+      const room = roomsData.find(r => r.id === roomId);
+      if (!room || !room.images[index]) return;
+      currentRoomId = roomId;
+      currentImageIndex = index;
+      updateLightboxContent();
+      document.getElementById('lightboxModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightboxContent() {
+      const room = roomsData.find(r => r.id === currentRoomId);
+      if (!room) return;
+      const img = room.images[currentImageIndex];
+      const imgEl = document.getElementById('lightboxImg');
+      imgEl.src = img.localPath;
+      document.getElementById('lightboxCounter').textContent = (currentImageIndex + 1) + ' / ' + room.images.length + ' — ' + room.title;
+      document.getElementById('lightboxTitle').textContent = img.title;
+    }
+
+    function nextLightboxImage() {
+      const room = roomsData.find(r => r.id === currentRoomId);
+      if (!room) return;
+      currentImageIndex = (currentImageIndex + 1) % room.images.length;
+      updateLightboxContent();
+    }
+
+    function prevLightboxImage() {
+      const room = roomsData.find(r => r.id === currentRoomId);
+      if (!room) return;
+      currentImageIndex = (currentImageIndex - 1 + room.images.length) % room.images.length;
+      updateLightboxContent();
+    }
+  </script>
+</body>
+</html>
