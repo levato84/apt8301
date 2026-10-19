@@ -71,7 +71,6 @@
     .room-header-meta { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
     .room-title { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 600; letter-spacing: -0.03em; color: var(--text); margin-bottom: 0.5rem; }
     .room-subtitle { font-size: 1.0625rem; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; }
-    .room-desc { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6; }
 
     .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
     @media (min-width: 768px) {
@@ -92,7 +91,6 @@
     .overlay-hint { color: #fff; font-size: 0.75rem; background: rgba(0, 0, 0, 0.6); padding: 0.375rem 0.75rem; border-radius: 4px; backdrop-filter: blur(4px); }
     .image-caption { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.8125rem; padding: 0 0.125rem; }
     .caption-title { color: var(--text); font-weight: 500; }
-    .caption-path { color: var(--text-muted); font-family: monospace; font-size: 0.6875rem; }
 
     .site-footer { padding: 4rem 0 2rem; border-top: 1px solid var(--border); margin-top: 4rem; }
     .footer-grid { display: flex; flex-direction: column; gap: 2rem; justify-content: space-between; }
@@ -130,7 +128,7 @@
       <p class="hero-kicker">Apresentação Arquitetônica</p>
       <h1 class="hero-title">Residência & Estilo</h1>
       <p class="hero-desc">Apartamento no Jardim Carioca, Ilha do Governador. Uma composição refinada de iluminação natural, ventilação cruzada e marcenaria sob medida Madeirol® com reforma integral.</p>
-      <div class="hero-image-frame" onclick="openLightbox('quarto-suite', 0)">
+      <div class="hero-image-frame" onclick="openLightbox('sala', 0)">
         <img src="hero.jpeg" alt="Perspectiva Residência & Estilo" class="hero-image" />
       </div>
     </section>
@@ -169,147 +167,170 @@
 
     <nav class="room-nav-bar" aria-label="Navegação por cômodos">
       <div class="room-nav-inner">
-        <a href="#quarto-suite" class="room-nav-link" data-room="quarto-suite"><span class="nav-number">01</span><span class="nav-label">Quarto Suíte</span></a>
-        <a href="#quarto" class="room-nav-link" data-room="quarto"><span class="nav-number">02</span><span class="nav-label">Quarto</span></a>
-        <a href="#sala" class="room-nav-link" data-room="sala"><span class="nav-number">03</span><span class="nav-label">Sala</span></a>
-        <a href="#cozinha" class="room-nav-link" data-room="cozinha"><span class="nav-number">04</span><span class="nav-label">Cozinha</span></a>
-        <a href="#escritorio" class="room-nav-link" data-room="escritorio"><span class="nav-number">05</span><span class="nav-label">Escritório</span></a>
-        <a href="#banheiro-social" class="room-nav-link" data-room="banheiro-social"><span class="nav-number">06</span><span class="nav-label">Banheiro Social</span></a>
-        <a href="#area" class="room-nav-link" data-room="area"><span class="nav-number">07</span><span class="nav-label">Área</span></a>
-        <a href="#condominio" class="room-nav-link" data-room="condominio"><span class="nav-number">08</span><span class="nav-label">Condomínio</span></a>
-        <a href="#armario-corredor" class="room-nav-link" data-room="armario-corredor"><span class="nav-number">09</span><span class="nav-label">Armário Corredor</span></a>
+        <a href="#sala-de-estar" class="room-nav-link" data-room="sala"><span class="nav-number">01</span><span class="nav-label">Sala de estar</span></a>
+        <a href="#banheiro-social" class="room-nav-link" data-room="banheiro-social"><span class="nav-number">02</span><span class="nav-label">Banheiro Social</span></a>
+        <a href="#corredor-armarios" class="room-nav-link" data-room="armario-corredor"><span class="nav-number">03</span><span class="nav-label">Corredor & Armários</span></a>
+        <a href="#quarto" class="room-nav-link" data-room="quarto"><span class="nav-number">04</span><span class="nav-label">Quarto</span></a>
+        <a href="#quarto-suite" class="room-nav-link" data-room="quarto-suite"><span class="nav-number">05</span><span class="nav-label">Quarto Suíte</span></a>
+        <a href="#escritorio" class="room-nav-link" data-room="escritorio"><span class="nav-number">06</span><span class="nav-label">Escritório</span></a>
+        <a href="#cozinha" class="room-nav-link" data-room="cozinha"><span class="nav-number">07</span><span class="nav-label">Cozinha</span></a>
+        <a href="#area" class="room-nav-link" data-room="area"><span class="nav-number">08</span><span class="nav-label">Área</span></a>
+        <a href="#condominio" class="room-nav-link" data-room="condominio"><span class="nav-number">09</span><span class="nav-label">Condomínio</span></a>
       </div>
     </nav>
 
-    <!-- Quarto Suíte -->
-    <section id="quarto-suite" class="room-section">
+    <!-- 01 Sala de estar -->
+    <section id="sala-de-estar" class="room-section">
       <div class="room-header">
         <div class="room-header-meta"><span class="room-number">01</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Sala de estar</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-2" onclick="openLightbox('sala', 0)">
+          <div class="image-wrapper aspect-[16/9]"><img src="Sala/sala-1.jpeg" alt="Sala de estar 1" loading="lazy" class="gallery-image"/></div>
+          <figcaption class="image-caption"><span class="caption-title">Sala de estar 1</span></figcaption>
+        </figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 1)"><div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-2.jpeg" alt="Sala de estar 2" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Sala de estar 2</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 2)"><div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-3.jpeg" alt="Sala de estar 3" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Sala de estar 3</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 3)"><div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-4.jpeg" alt="Sala de estar 4" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Sala de estar 4</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 4)"><div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-5.jpeg" alt="Sala de estar 5" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Sala de estar 5</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 5)"><div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-6.jpeg" alt="Sala de estar 6" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Sala de estar 6</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 6)"><div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-7.jpeg" alt="Sala de estar 7" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Sala de estar 7</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 7)"><div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-8.jpeg" alt="Sala de estar 8" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Sala de estar 8</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 8)"><div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-9.jpeg" alt="Sala de estar 9" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Sala de estar 9</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 9)"><div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-10.jpeg" alt="Sala de estar 10" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Sala de estar 10</span></figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 02 Banheiro Social -->
+    <section id="banheiro-social" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">02</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Banheiro Social</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('banheiro-social', 0)"><div class="image-wrapper aspect-[4/3]"><img src="Banheiro Social/banheiro-social-1.jpeg" alt="Banheiro Social 1" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Banheiro Social 1</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('banheiro-social', 1)"><div class="image-wrapper aspect-[4/3]"><img src="Banheiro Social/banheiro-social-2.jpeg" alt="Banheiro Social 2" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Banheiro Social 2</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('banheiro-social', 2)"><div class="image-wrapper aspect-[4/3]"><img src="Banheiro Social/banheiro-social-3.jpeg" alt="Banheiro Social 3" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Banheiro Social 3</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('banheiro-social', 3)"><div class="image-wrapper aspect-[4/3]"><img src="Banheiro Social/banheiro-social-4.jpeg" alt="Banheiro Social 4" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Banheiro Social 4</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('banheiro-social', 4)"><div class="image-wrapper aspect-[4/3]"><img src="Banheiro Social/banheiro-social-5.jpeg" alt="Banheiro Social 5" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Banheiro Social 5</span></figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 03 Corredor & Armários -->
+    <section id="corredor-armarios" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">03</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Corredor & Armários</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('armario-corredor', 0)"><div class="image-wrapper aspect-[4/3]"><img src="Armário corredor/armario-corredor-1.jpeg" alt="Corredor & Armários 1" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Corredor & Armários 1</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('armario-corredor', 1)"><div class="image-wrapper aspect-[4/3]"><img src="Armário corredor/armario-corredor-2.jpeg" alt="Corredor & Armários 2" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Corredor & Armários 2</span></figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 04 Quarto -->
+    <section id="quarto" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">04</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Quarto</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 0)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-1.jpeg" alt="Quarto 1" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto 1</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 1)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-2.jpeg" alt="Quarto 2" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto 2</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 2)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-3.jpeg" alt="Quarto 3" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto 3</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 3)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-4.jpeg" alt="Quarto 4" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto 4</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 4)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-5.jpeg" alt="Quarto 5" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto 5</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 5)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-6.jpeg" alt="Quarto 6" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto 6</span></figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 05 Quarto Suíte -->
+    <section id="quarto-suite" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">05</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
         <h2 class="room-title">Quarto Suíte</h2>
-        <p class="room-subtitle">Privacidade, conforto térmico e marcenaria integral</p>
       </div>
       <div class="gallery-grid">
         <figure class="gallery-card md:col-span-2 md:row-span-2" onclick="openLightbox('quarto-suite', 0)">
           <div class="image-wrapper aspect-[4/3] md:aspect-[16/11]">
-            <img src="Quarto Suíte/quarto-suite-1.jpeg" alt="Suíte Master" loading="lazy" class="gallery-image"/>
+            <img src="Quarto Suíte/quarto-suite-1.jpeg" alt="Quarto Suíte 1" loading="lazy" class="gallery-image"/>
             <div class="image-overlay"><span class="overlay-index">01</span><span class="overlay-hint">Ampliar</span></div>
           </div>
-          <figcaption class="image-caption"><span class="caption-title">Suíte Master</span><span class="caption-path">Quarto Suíte/quarto-suite-1.jpeg</span></figcaption>
+          <figcaption class="image-caption"><span class="caption-title">Quarto Suíte 1</span></figcaption>
         </figure>
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 1)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-2.jpeg" alt="Suíte" loading="lazy" class="gallery-image"/></div>
-        </figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 1)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-2.jpeg" alt="Quarto Suíte 2" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto Suíte 2</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 2)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-3.jpeg" alt="Quarto Suíte 3" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto Suíte 3</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 3)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-4.jpeg" alt="Quarto Suíte 4" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto Suíte 4</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 4)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-5.jpeg" alt="Quarto Suíte 5" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto Suíte 5</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 5)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-6.jpeg" alt="Quarto Suíte 6" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto Suíte 6</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 6)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-7.jpeg" alt="Quarto Suíte 7" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto Suíte 7</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 7)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-8.jpeg" alt="Quarto Suíte 8" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto Suíte 8</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 8)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-9.jpeg" alt="Quarto Suíte 9" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Quarto Suíte 9</span></figcaption></figure>
       </div>
     </section>
 
-    <!-- Quarto -->
-    <section id="quarto" class="room-section">
-      <div class="room-header">
-        <div class="room-header-meta"><span class="room-number">02</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
-        <h2 class="room-title">Quarto</h2>
-        <p class="room-subtitle">Espaço aconchegante, luminosidade e marcenaria planejada</p>
-      </div>
-      <div class="gallery-grid">
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 0)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-1.jpeg" alt="Quarto" loading="lazy" class="gallery-image"/></div>
-        </figure>
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto', 1)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Quarto/quarto-2.jpeg" alt="Quarto" loading="lazy" class="gallery-image"/></div>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Sala -->
-    <section id="sala" class="room-section">
-      <div class="room-header">
-        <div class="room-header-meta"><span class="room-number">03</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
-        <h2 class="room-title">Sala</h2>
-      </div>
-      <div class="gallery-grid">
-        <figure class="gallery-card md:col-span-2" onclick="openLightbox('sala', 0)">
-          <div class="image-wrapper aspect-[16/9]"><img src="Sala/sala-1.jpeg" alt="Sala" loading="lazy" class="gallery-image"/></div>
-        </figure>
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('sala', 1)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Sala/sala-2.jpeg" alt="Sala" loading="lazy" class="gallery-image"/></div>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Cozinha -->
-    <section id="cozinha" class="room-section">
-      <div class="room-header">
-        <div class="room-header-meta"><span class="room-number">04</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
-        <h2 class="room-title">Cozinha</h2>
-      </div>
-      <div class="gallery-grid">
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('cozinha', 0)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Cozinha/cozinha-1.jpeg" alt="Cozinha" loading="lazy" class="gallery-image"/></div>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Escritório -->
+    <!-- 06 Escritório -->
     <section id="escritorio" class="room-section">
       <div class="room-header">
-        <div class="room-header-meta"><span class="room-number">05</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <div class="room-header-meta"><span class="room-number">06</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
         <h2 class="room-title">Escritório</h2>
       </div>
       <div class="gallery-grid">
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('escritorio', 0)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Escritório/escritorio-1.jpeg" alt="Escritório" loading="lazy" class="gallery-image"/></div>
-        </figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('escritorio', 0)"><div class="image-wrapper aspect-[4/3]"><img src="Escritório/escritorio-1.jpeg" alt="Escritório 1" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Escritório 1</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('escritorio', 1)"><div class="image-wrapper aspect-[4/3]"><img src="Escritório/escritorio-2.jpeg" alt="Escritório 2" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Escritório 2</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('escritorio', 2)"><div class="image-wrapper aspect-[4/3]"><img src="Escritório/escritorio-3.jpeg" alt="Escritório 3" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Escritório 3</span></figcaption></figure>
       </div>
     </section>
 
-    <!-- Banheiro Social -->
-    <section id="banheiro-social" class="room-section">
-      <div class="room-header">
-        <div class="room-header-meta"><span class="room-number">06</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
-        <h2 class="room-title">Banheiro Social</h2>
-      </div>
-      <div class="gallery-grid">
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('banheiro-social', 0)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Banheiro Social/banheiro-social-1.jpeg" alt="Banheiro Social" loading="lazy" class="gallery-image"/></div>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Área -->
-    <section id="area" class="room-section">
+    <!-- 07 Cozinha -->
+    <section id="cozinha" class="room-section">
       <div class="room-header">
         <div class="room-header-meta"><span class="room-number">07</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <h2 class="room-title">Cozinha</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('cozinha', 0)"><div class="image-wrapper aspect-[4/3]"><img src="Cozinha/cozinha-1.jpeg" alt="Cozinha 1" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Cozinha 1</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('cozinha', 1)"><div class="image-wrapper aspect-[4/3]"><img src="Cozinha/cozinha-2.jpeg" alt="Cozinha 2" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Cozinha 2</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('cozinha', 2)"><div class="image-wrapper aspect-[4/3]"><img src="Cozinha/cozinha-3.jpeg" alt="Cozinha 3" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Cozinha 3</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('cozinha', 3)"><div class="image-wrapper aspect-[4/3]"><img src="Cozinha/cozinha-4.jpeg" alt="Cozinha 4" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Cozinha 4</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('cozinha', 4)"><div class="image-wrapper aspect-[4/3]"><img src="Cozinha/cozinha-5.jpeg" alt="Cozinha 5" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Cozinha 5</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('cozinha', 5)"><div class="image-wrapper aspect-[4/3]"><img src="Cozinha/cozinha-6.jpeg" alt="Cozinha 6" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Cozinha 6</span></figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 08 Área -->
+    <section id="area" class="room-section">
+      <div class="room-header">
+        <div class="room-header-meta"><span class="room-number">08</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
         <h2 class="room-title">Área</h2>
       </div>
       <div class="gallery-grid">
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('area', 0)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Área/area-1.jpeg" alt="Área" loading="lazy" class="gallery-image"/></div>
-        </figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('area', 0)"><div class="image-wrapper aspect-[4/3]"><img src="Área/area-1.jpeg" alt="Área 1" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Área 1</span></figcaption></figure>
+        <figure class="gallery-card md:col-span-1" onclick="openLightbox('area', 1)"><div class="image-wrapper aspect-[4/3]"><img src="Área/area-2.jpeg" alt="Área 2" loading="lazy" class="gallery-image"/></div><figcaption class="image-caption"><span class="caption-title">Área 2</span></figcaption></figure>
       </div>
     </section>
 
-    <!-- Condomínio -->
+    <!-- 09 Condomínio -->
     <section id="condominio" class="room-section">
       <div class="room-header">
-        <div class="room-header-meta"><span class="room-number">08</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
+        <div class="room-header-meta"><span class="room-number">09</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
         <h2 class="room-title">Condomínio</h2>
       </div>
       <div class="gallery-grid">
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('condominio', 0)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Condomínio/condominio-1.jpeg" alt="Condomínio" loading="lazy" class="gallery-image"/></div>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Armário Corredor -->
-    <section id="armario-corredor" class="room-section">
-      <div class="room-header">
-        <div class="room-header-meta"><span class="room-number">09</span><span class="room-divider">/</span><span class="room-tag">Ambiente</span></div>
-        <h2 class="room-title">Armário Corredor</h2>
-      </div>
-      <div class="gallery-grid">
-        <figure class="gallery-card md:col-span-1" onclick="openLightbox('armario-corredor', 0)">
-          <div class="image-wrapper aspect-[4/3]"><img src="Armário corredor/armario-corredor-1.jpeg" alt="Armário Corredor" loading="lazy" class="gallery-image"/></div>
-        </figure>
+        <!-- Renderização dinâmica para as 27 fotos de condomínio -->
+        <script>
+          for (let i = 1; i <= 27; i++) {
+            document.write(`
+              <figure class="gallery-card md:col-span-1" onclick="openLightbox('condominio', ${i-1})">
+                <div class="image-wrapper aspect-[4/3]">
+                  <img src="Condomínio/condominio-${i}.jpeg" alt="Condomínio ${i}" loading="lazy" class="gallery-image"/>
+                </div>
+                <figcaption class="image-caption"><span class="caption-title">Condomínio ${i}</span></figcaption>
+              </figure>
+            `);
+          }
+        </script>
       </div>
     </section>
   </main>
@@ -331,7 +352,7 @@
   <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true">
     <div class="lightbox-top">
       <span id="lightboxCounter" class="lightbox-counter">01 / 01</span>
-      <button class="lightbox-close-btn" onclick="closeLightbox()">×</button>
+      <button class="lightbox-close-btn" onclick="history.back()">×</button>
     </div>
     <div class="lightbox-center">
       <button class="lightbox-nav-btn lightbox-prev" onclick="prevLightboxImage()">‹</button>
@@ -345,19 +366,56 @@
 
   <script>
     const roomsData = [
-      { id: "quarto-suite", title: "Quarto Suíte", images: [{ localPath: "Quarto Suíte/quarto-suite-1.jpeg", title: "Suíte Master" }, { localPath: "Quarto Suíte/quarto-suite-2.jpeg", title: "Suíte" }] },
-      { id: "quarto", title: "Quarto", images: [{ localPath: "Quarto/quarto-1.jpeg", title: "Quarto 1" }, { localPath: "Quarto/quarto-2.jpeg", title: "Quarto 2" }] },
-      { id: "sala", title: "Sala", images: [{ localPath: "Sala/sala-1.jpeg", title: "Sala 1" }, { localPath: "Sala/sala-2.jpeg", title: "Sala 2" }] },
-      { id: "cozinha", title: "Cozinha", images: [{ localPath: "Cozinha/cozinha-1.jpeg", title: "Cozinha" }] },
-      { id: "escritorio", title: "Escritório", images: [{ localPath: "Escritório/escritorio-1.jpeg", title: "Escritório" }] },
-      { id: "banheiro-social", title: "Banheiro Social", images: [{ localPath: "Banheiro Social/banheiro-social-1.jpeg", title: "Banheiro Social" }] },
-      { id: "area", title: "Área", images: [{ localPath: "Área/area-1.jpeg", title: "Área" }] },
-      { id: "condominio", title: "Condomínio", images: [{ localPath: "Condomínio/condominio-1.jpeg", title: "Condomínio" }] },
-      { id: "armario-corredor", title: "Armário Corredor", images: [{ localPath: "Armário corredor/armario-corredor-1.jpeg", title: "Armário Corredor" }] }
+      { 
+        id: "sala", 
+        title: "Sala de estar", 
+        images: Array.from({length: 10}, (_, i) => ({ localPath: `Sala/sala-${i+1}.jpeg`, title: `Sala de estar ${i+1}` })) 
+      },
+      { 
+        id: "banheiro-social", 
+        title: "Banheiro Social", 
+        images: Array.from({length: 5}, (_, i) => ({ localPath: `Banheiro Social/banheiro-social-${i+1}.jpeg`, title: `Banheiro Social ${i+1}` })) 
+      },
+      { 
+        id: "armario-corredor", 
+        title: "Corredor & Armários", 
+        images: Array.from({length: 2}, (_, i) => ({ localPath: `Armário corredor/armario-corredor-${i+1}.jpeg`, title: `Corredor & Armários ${i+1}` })) 
+      },
+      { 
+        id: "quarto", 
+        title: "Quarto", 
+        images: Array.from({length: 6}, (_, i) => ({ localPath: `Quarto/quarto-${i+1}.jpeg`, title: `Quarto ${i+1}` })) 
+      },
+      { 
+        id: "quarto-suite", 
+        title: "Quarto Suíte", 
+        images: Array.from({length: 9}, (_, i) => ({ localPath: `Quarto Suíte/quarto-suite-${i+1}.jpeg`, title: `Quarto Suíte ${i+1}` })) 
+      },
+      { 
+        id: "escritorio", 
+        title: "Escritório", 
+        images: Array.from({length: 3}, (_, i) => ({ localPath: `Escritório/escritorio-${i+1}.jpeg`, title: `Escritório ${i+1}` })) 
+      },
+      { 
+        id: "cozinha", 
+        title: "Cozinha", 
+        images: Array.from({length: 6}, (_, i) => ({ localPath: `Cozinha/cozinha-${i+1}.jpeg`, title: `Cozinha ${i+1}` })) 
+      },
+      { 
+        id: "area", 
+        title: "Área", 
+        images: Array.from({length: 2}, (_, i) => ({ localPath: `Área/area-${i+1}.jpeg`, title: `Área ${i+1}` })) 
+      },
+      { 
+        id: "condominio", 
+        title: "Condomínio", 
+        images: Array.from({length: 27}, (_, i) => ({ localPath: `Condomínio/condominio-${i+1}.jpeg`, title: `Condomínio ${i+1}` })) 
+      }
     ];
 
     let currentRoomId = null;
     let currentImageIndex = 0;
+    let isLightboxOpen = false;
 
     function openLightbox(roomId, index) {
       const room = roomsData.find(r => r.id === roomId);
@@ -365,14 +423,36 @@
       currentRoomId = roomId;
       currentImageIndex = index;
       updateLightboxContent();
+      
+      if (!isLightboxOpen) {
+        history.pushState({ lightbox: true }, "");
+        isLightboxOpen = true;
+      }
+      
       document.getElementById('lightboxModal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
+      if (isLightboxOpen) {
+        isLightboxOpen = false;
+        history.back();
+        return;
+      }
+      forceCloseLightbox();
+    }
+
+    function forceCloseLightbox() {
+      isLightboxOpen = false;
       document.getElementById('lightboxModal').classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    window.addEventListener('popstate', function(event) {
+      if (isLightboxOpen) {
+        forceCloseLightbox();
+      }
+    });
 
     function updateLightboxContent() {
       const room = roomsData.find(r => r.id === currentRoomId);
