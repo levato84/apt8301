@@ -84,10 +84,6 @@
     @media (min-width: 768px) { .md\:aspect-\[16\/11\] { aspect-ratio: 16 / 11; } }
     .gallery-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
     .gallery-card:hover .gallery-image { transform: scale(1.03); }
-    .image-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.25); opacity: 0; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem; transition: opacity 0.25s ease; }
-    .gallery-card:hover .image-overlay { opacity: 1; }
-    .overlay-index { color: #fff; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.05em; }
-    .overlay-hint { color: #fff; font-size: 0.75rem; background: rgba(0, 0, 0, 0.6); padding: 0.375rem 0.75rem; border-radius: 4px; backdrop-filter: blur(4px); }
 
     .site-footer { padding: 4rem 0 2rem; border-top: 1px solid var(--border); margin-top: 4rem; }
     .footer-grid { display: flex; flex-direction: column; gap: 2rem; justify-content: space-between; }
@@ -99,13 +95,13 @@
     /* Lightbox Modal */
     .lightbox-modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(20, 20, 20, 0.95); backdrop-filter: blur(12px); flex-direction: column; justify-content: space-between; padding: 1.5rem; color: #ffffff; }
     .lightbox-modal.open { display: flex; }
-    .lightbox-top { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; z-index: 10; }
+    .lightbox-top { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; z-index: 10; pointer-events: auto; }
     .lightbox-counter { font-size: 0.875rem; color: rgba(255, 255, 255, 0.7); }
     .lightbox-close-btn { background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; line-height: 1; padding: 0.25rem 0.5rem; }
     
-    .lightbox-center { position: relative; display: flex; align-items: center; justify-content: center; flex: 1; max-width: 1200px; width: 100%; margin: 0 auto; overflow: hidden; cursor: zoom-out; }
+    .lightbox-center { position: relative; display: flex; align-items: center; justify-content: center; flex: 1; max-width: 1200px; width: 100%; margin: 0 auto; overflow: hidden; cursor: pointer; }
     
-    .lightbox-img { max-width: 100%; max-height: 75vh; object-fit: contain; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); opacity: 1; transition: opacity 0.35s ease-in-out; cursor: default; }
+    .lightbox-img { max-width: 100%; max-height: 75vh; object-fit: contain; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); opacity: 1; transition: opacity 0.35s ease-in-out; cursor: pointer; }
     .lightbox-img.fade-out { opacity: 0; }
 
     .lightbox-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: background 0.2s; z-index: 10; }
@@ -113,15 +109,15 @@
     .lightbox-prev { left: 1rem; }
     .lightbox-next { right: 1rem; }
 
-    .lightbox-bottom { text-align: center; max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: center; align-items: center; min-height: 48px; z-index: 10; }
+    .lightbox-bottom { text-align: center; max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: center; align-items: center; min-height: 48px; z-index: 10; pointer-events: auto; }
     
     /* Botão flutuante para próximo cômodo */
     .next-room-btn { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #fff; padding: 0.625rem 1.25rem; border-radius: 30px; font-size: 0.875rem; font-weight: 500; cursor: pointer; backdrop-filter: blur(8px); transition: background 0.2s, transform 0.2s; display: none; }
     .next-room-btn:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
     .next-room-btn.visible { display: inline-flex; align-items: center; gap: 0.5rem; }
 
-    /* Botão Voltar ao Topo */
-    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 48px; height: 48px; background: var(--text); color: #fff; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 50; }
+    /* Botão Voltar ao Topo (posicionado acima do Netlify badge) */
+    .back-to-top { position: fixed; bottom: 5rem; right: 1.5rem; width: 48px; height: 48px; background: var(--text); color: #fff; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; box-shadow: 0 10px 25px rgba(0,0,0,0.25); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 50; }
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: var(--accent); transform: translateY(-3px); }
   </style>
@@ -140,7 +136,7 @@
       <p class="hero-kicker">Apresentação Arquitetônica</p>
       <h1 class="hero-title">Residência & Estilo</h1>
       <p class="hero-desc">Apartamento no Jardim Carioca, Ilha do Governador. Uma composição refinada de iluminação natural, ventilação cruzada e marcenaria sob medida Madeirol® com reforma integral.</p>
-      <div class="hero-image-frame" onclick="openLightbox('sala', 0)">
+      <div class="hero-image-frame" onclick="openHeroImage()">
         <img src="hero.jpeg" alt="Perspectiva Residência & Estilo" class="hero-image" />
       </div>
     </section>
@@ -171,7 +167,7 @@
             <li class="feature-item">Armários Madeirol® sob medida com ferragens amortecidas.</li>
             <li class="feature-item">Pisos em porcelanato e acabamento de borda retificada.</li>
             <li class="feature-item">Esquadrias com isolamento acústico e ventilação natural generosa.</li>
-            <li class="feature-item">Localização privilegiada a passos do Shopping Ilha Plaza, condução e serviços.</li>
+            <li class="feature-item">Localização privileged a passos do Shopping Ilha Plaza, condução e serviços.</li>
           </ul>
         </div>
       </div>
@@ -264,7 +260,6 @@
         <figure class="gallery-card md:col-span-2 md:row-span-2" onclick="openLightbox('quarto-suite', 0)">
           <div class="image-wrapper aspect-[4/3] md:aspect-[16/11]">
             <img src="Quarto Suíte/quarto-suite-1.jpeg" alt="Quarto Suíte 1" loading="lazy" class="gallery-image"/>
-            <div class="image-overlay"><span class="overlay-index">01</span><span class="overlay-hint">Ampliar</span></div>
           </div>
         </figure>
         <figure class="gallery-card md:col-span-1" onclick="openLightbox('quarto-suite', 1)"><div class="image-wrapper aspect-[4/3]"><img src="Quarto Suíte/quarto-suite-2.jpeg" alt="Quarto Suíte 2" loading="lazy" class="gallery-image"/></div></figure>
@@ -355,7 +350,7 @@
     </div>
   </footer>
 
-  <!-- Botão Voltar ao Topo -->
+  <!-- Botão Voltar ao Topo (posicionado acima do Netlify badge) -->
   <button id="backToTopBtn" class="back-to-top" onclick="scrollToTop()" title="Voltar ao topo">↑</button>
 
   <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true">
@@ -363,9 +358,9 @@
       <span id="lightboxCounter" class="lightbox-counter">01 / 01</span>
       <button class="lightbox-close-btn" onclick="history.back()">×</button>
     </div>
-    <div class="lightbox-center" onclick="handleBackgroundClick(event)">
+    <div class="lightbox-center" onclick="closeLightbox()">
       <button class="lightbox-nav-btn lightbox-prev" onclick="event.stopPropagation(); prevLightboxImage();">‹</button>
-      <img id="lightboxImg" src="" alt="" class="lightbox-img" />
+      <img id="lightboxImg" src="" alt="" class="lightbox-img" onclick="event.stopPropagation(); closeLightbox();" />
       <button class="lightbox-nav-btn lightbox-next" onclick="event.stopPropagation(); nextLightboxImage();">›</button>
     </div>
     <div class="lightbox-bottom">
@@ -375,6 +370,7 @@
 
   <script>
     const roomsData = [
+      { id: "hero-standalone", title: "Apresentação", images: [{ localPath: "hero.jpeg" }] },
       { id: "sala", title: "Sala de estar", images: Array.from({length: 10}, (_, i) => ({ localPath: `Sala/sala-${i+1}.jpeg` })) },
       { id: "banheiro-social", title: "Banheiro Social", images: Array.from({length: 5}, (_, i) => ({ localPath: `Banheiro Social/banheiro-social-${i+1}.jpeg` })) },
       { id: "armario-corredor", title: "Corredor & Armários", images: Array.from({length: 2}, (_, i) => ({ localPath: `Armário corredor/armario-corredor-${i+1}.jpeg` })) },
@@ -389,6 +385,10 @@
     let currentRoomId = null;
     let currentImageIndex = 0;
     let isLightboxOpen = false;
+
+    function openHeroImage() {
+      openLightbox('hero-standalone', 0);
+    }
 
     function openLightbox(roomId, index) {
       const room = roomsData.find(r => r.id === roomId);
@@ -419,12 +419,6 @@
       isLightboxOpen = false;
       document.getElementById('lightboxModal').classList.remove('open');
       document.body.style.overflow = '';
-    }
-
-    function handleBackgroundClick(event) {
-      if (event.target.classList.contains('lightbox-center')) {
-        closeLightbox();
-      }
     }
 
     window.addEventListener('popstate', function(event) {
