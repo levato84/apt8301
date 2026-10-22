@@ -48,10 +48,8 @@
     .building-info-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
     @media (min-width: 1024px) { .building-info-grid { grid-template-columns: 1fr 1.6fr; gap: 5rem; } }
     .concept-lead { font-size: clamp(1.5rem, 4vw, 2.75rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; }
-    .concept-lead .highlight { color: var(--accent); font-weight: 700; }
     .concept-subtext { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
-    .info-heading { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-    .info-lead { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6; }
+    .info-heading { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
     .specs-table { border-top: 1px solid var(--border); margin-bottom: 2rem; width: 100%; }
     .spec-row { display: flex; flex-direction: column; gap: 0.25rem; padding: 0.875rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
     @media (min-width: 640px) { .spec-row { flex-direction: row; justify-content: space-between; align-items: baseline; gap: 1.5rem; } }
@@ -99,7 +97,7 @@
     .footer-desc { font-size: 0.85rem; color: var(--text-muted); max-width: 40ch; }
     .footer-specs-summary { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
 
-    /* Lightbox Modal otimizado para Mobile */
+    /* Lightbox Modal */
     .lightbox-modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(15, 15, 15, 0.96); backdrop-filter: blur(12px); flex-direction: column; justify-content: space-between; padding: 1rem; color: #ffffff; width: 100vw; height: 100vh; overflow: hidden; }
     .lightbox-modal.open { display: flex; }
     .lightbox-top { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; z-index: 10; pointer-events: auto; }
@@ -126,7 +124,6 @@
     .next-room-btn:hover { background: rgba(255, 255, 255, 0.35); transform: translateY(-2px); }
     .next-room-btn.visible { display: inline-flex; align-items: center; gap: 0.5rem; }
 
-    /* Botão Voltar ao Topo posicionado com segurança acima do selo do Netlify */
     .back-to-top { position: fixed; bottom: 5.5rem; right: 1.25rem; width: 44px; height: 44px; background: var(--text); color: #fff; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; box-shadow: 0 8px 20px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 45; }
     @media (min-width: 768px) { .back-to-top { width: 48px; height: 48px; font-size: 1.25rem; bottom: 5rem; right: 2rem; } }
     .back-to-top.show { opacity: 1; visibility: visible; }
@@ -144,9 +141,9 @@
 
   <main class="container">
     <section class="hero-section">
-      <p class="hero-kicker">Apresentação Arquitetônica</p>
+      <p class="hero-kicker">Visão Geral</p>
       <h1 class="hero-title">Residência & Estilo</h1>
-      <p class="hero-desc">Apartamento no Jardim Carioca, Ilha do Governador. Uma composição refinada de iluminação natural, ventilação cruzada e marcenaria sob medida Madeirol® com reforma integral.</p>
+      <p class="hero-desc">Apartamento no Jardim Carioca, Ilha do Governador que combina iluminação natural, ventilação cruzada, localização privileged e marcenaria sob medida Madeirol®.</p>
       <div class="hero-image-frame" onclick="openHeroImage()">
         <img src="hero.jpeg" alt="Perspectiva Residência & Estilo" class="hero-image" />
       </div>
@@ -155,29 +152,36 @@
     <section class="building-info-section" id="informacoes">
       <div class="building-info-grid">
         <div class="concept-column">
-          <h2 class="concept-lead">Pureza geométrica.<br /><span class="highlight">Ao menor detalhe.</span></h2>
-          <p class="concept-subtext">Cada centímetro foi planejado para maximizar a sensação de espaço, luminosidade e conforto sensorial contínuo.</p>
+          <h2 class="concept-lead">Reforma e praticidade</h2>
+          <p class="concept-subtext">Reformado por completo em 2018, tendo cada centímetro planejado para maximizar a sensação de espaço, a luminosidade, conforto, além de focar no minimalismo funcional com acabamentos atemporal e móveis de qualidade superior.</p>
         </div>
 
         <div class="specs-column">
           <h3 class="info-heading">Informações do Imóvel</h3>
-          <p class="info-lead">Arquitetura que inspira. Um projeto que alia a serenidade do minimalismo funcional com acabamentos de alto padrão.</p>
 
           <div class="specs-table">
+            <div class="spec-row"><span class="spec-label">Preço</span><span class="spec-value">R$ 475 mil</span></div>
+            <div class="spec-row"><span class="spec-label">Condomínio</span><span class="spec-value">R$ 670</span></div>
+            <div class="spec-row"><span class="spec-label">IPTU</span><span class="spec-value">R$ 900</span></div>
             <div class="spec-row"><span class="spec-label">Local</span><span class="spec-value">Condomínio Novo Horizonte | Jardim Carioca (Próximo ao Shopping Ilha Plaza)</span></div>
             <div class="spec-row"><span class="spec-label">Área Útil</span><span class="spec-value">75 m²</span></div>
-            <div class="spec-row"><span class="spec-label">Dormitórios</span><span class="spec-value">2 quartos [sendo 1 suíte privativa]</span></div>
+            <div class="spec-row"><span class="spec-label">Dormitórios</span><span class="spec-value">2 quartos [sendo 1 suíte privativa] *A planta original com 3 quartos.</span></div>
             <div class="spec-row"><span class="spec-label">Reforma Integral</span><span class="spec-value">2018 (infraestrutura total renovada)</span></div>
-            <div class="spec-row"><span class="spec-label">Infraestrutura</span><span class="spec-value">Instalações elétrica, hidráulica e rede de gás 100% novas</span></div>
-            <div class="spec-row"><span class="spec-label">Marcenaria</span><span class="spec-value">Armários Madeirol® sob medida de alta marcenaria</span></div>
+            <div class="spec-row"><span class="spec-label">Infraestrutura</span><span class="spec-value">Instalações elétrica, hidráulica e rede de gás</span></div>
+            <div class="spec-row"><span class="spec-label">Marcenaria</span><span class="spec-value">Armários Madeirol® sob medida</span></div>
           </div>
 
-          <h4 class="features-heading">Destaques Construtivos</h4>
+          <h4 class="features-heading">Outros destaques</h4>
           <ul class="features-list">
-            <li class="feature-item">Parte elétrica, hidráulica e gás novas.</li>
-            <li class="feature-item">Armários Madeirol® sob medida com ferragens amortecidas.</li>
-            <li class="feature-item">Pisos em porcelanato e acabamento de borda retificada.</li>
-            <li class="feature-item">Esquadrias com isolamento acústico e ventilação natural generosa.</li>
+            <li class="feature-item">Vaga de garagem marcada</li>
+            <li class="feature-item">Condomínio fechado com portaria 24 horas</li>
+            <li class="feature-item">Área de lazer</li>
+            <li class="feature-item">Salão de festas</li>
+            <li class="feature-item">Quadra</li>
+            <li class="feature-item">Academia da terceira idade</li>
+            <li class="feature-item">Bicicletário</li>
+            <li class="feature-item">Cozinha com cooktop, coifa e forno a gás, além dos armários</li>
+            <li class="feature-item">Ar condicionado nos dois quartos, sendo um deles modelo WindFree (Samsung)</li>
             <li class="feature-item">Localização privilegiada a passos do Shopping Ilha Plaza, condução e serviços.</li>
           </ul>
         </div>
@@ -361,7 +365,6 @@
     </div>
   </footer>
 
-  <!-- Botão Voltar ao Topo reposicionado com segurança -->
   <button id="backToTopBtn" class="back-to-top" onclick="scrollToTop()" title="Voltar ao topo">↑</button>
 
   <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true">
